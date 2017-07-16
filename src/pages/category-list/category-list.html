@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Recipes</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="outer-content category-list">
+  <ion-grid>
+    <ion-row responsive-sm wrap>
+      <ion-col width-50 *ngFor="let category of categories">
+        <ion-card (click)="navigateToCategory(category)">
+          <img src="{{category.image}}" />
+          <div class="card-title">{{category.title}}</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

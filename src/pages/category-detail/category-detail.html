@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{category.title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar (ionInput)="searchRecipes($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let recipe of recipes" (click)="navigateToRecipe(recipe)">
+      <!--<ion-avatar item-left>
+        <img src="{{recipe.image}}">
+      </ion-avatar>-->
+      <h2>{{recipe.name}}</h2>
+      <p>{{recipe.description}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
