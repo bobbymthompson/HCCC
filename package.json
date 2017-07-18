@@ -7,10 +7,21 @@
     "url": "https://github.com/striker8118/HCCC.git"
   },
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon -i \"*.test.js\" server.js",
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "del": "^2.2.0",
+    "express": "^4.15.3",
+    "method-override": "^2.3.9",
+    "morgan": "^1.8.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
     "@angular/common": "2.2.1",
     "@angular/compiler": "2.2.1",
     "@angular/compiler-cli": "2.2.1",
@@ -21,15 +32,13 @@
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/platform-server": "2.2.1",
     "@ionic/storage": "1.1.6",
+    "@ionic/app-scripts": "0.0.47",
     "ionic-angular": "^2.0.0-rc.4",
     "ionic-native": "2.2.11",
     "ionicons": "3.0.0",
+    "nodemon": "^1.10.2",
     "rxjs": "5.0.0-beta.12",
-    "underscore": "^1.8.3",
+    "typescript": "2.0.9",
     "zone.js": "0.6.26"
-  },
-  "devDependencies": {
-    "@ionic/app-scripts": "0.0.47",
-    "typescript": "2.0.9"
   }
 }
