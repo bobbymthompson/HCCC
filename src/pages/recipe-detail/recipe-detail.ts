@@ -28,8 +28,9 @@ export class RecipeDetailPage {
     let modal = this.modalCtrl.create(WeeklyMenuAddPage, { recipe: this.recipe });
 
     modal.onDidDismiss((data) => {
-      console.log(data);
+      
       if (data) {
+
         let wmi = <WeeklyMenuItem>{};
         wmi.date = data.selectedDay.date;
         wmi.recipe = this.recipe;
