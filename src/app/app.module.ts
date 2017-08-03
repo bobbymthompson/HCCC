@@ -12,8 +12,10 @@ import { CategoryDetailPage } from '../pages/category-detail/category-detail';
 import { RecipeDetailPage } from '../pages/recipe-detail/recipe-detail'; 
 import { WeeklyMenuPage } from '../pages/weekly-menu/weekly-menu';
 import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
+import { WeeklyMenuAddPage } from '../pages/weekly-menu-add/weekly-menu-add';
 
 import { CommandCenterData } from '../providers/command-center-data';
+import { RecipeDataProvider, ShoppingListDataProvider } from '../providers/recipe-data-provider';
 import { UserData } from '../providers/user-data';
 
 
@@ -25,7 +27,8 @@ import { UserData } from '../providers/user-data';
     CategoryDetailPage,
     RecipeDetailPage,
     WeeklyMenuPage,
-    ShoppingListPage
+    ShoppingListPage,
+    WeeklyMenuAddPage
   ],
   imports: [
     IonicModule.forRoot(CommandCenter)
@@ -38,8 +41,9 @@ import { UserData } from '../providers/user-data';
     CategoryDetailPage,
     RecipeDetailPage,
     WeeklyMenuPage,
-    ShoppingListPage
+    ShoppingListPage,
+    WeeklyMenuAddPage
   ],
-  providers: [ CommandCenterData, UserData, Storage]
+  providers: [ CommandCenterData, UserData, RecipeDataProvider, ShoppingListDataProvider, Storage]
 })
 export class AppModule { }

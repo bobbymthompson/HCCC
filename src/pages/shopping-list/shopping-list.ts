@@ -1,22 +1,20 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
+import { ShoppingListDataProvider, ShoppingListItem } from '../../providers/recipe-data-provider';
 
-/*
-  Generated class for the ShoppingList page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-shopping-list',
   templateUrl: 'shopping-list.html'
 })
 export class ShoppingListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  shoppingListItems: Observable<ShoppingListItem[]>
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public shoppingListDataProvider: ShoppingListDataProvider) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ShoppingListPage');
+    this.shoppingListItems = this.shoppingListDataProvider.shoppingListItems;
+    this.shoppingListDataProvider.load();
   }
-
 }

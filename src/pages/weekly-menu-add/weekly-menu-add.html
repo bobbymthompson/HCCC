@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="close(true)">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-title>Add {{recipe.name}} to weekly menu</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close(false)" [disabled]="!selectedDay">
+        Add
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-label padding-left padding-top>What day is this being made?</ion-label>
+  <ion-grid no-padding>
+    <ion-row responsive-sm wrap align-items-stretch>
+      <ion-col width-20 *ngFor="let day of days" align-self-stretch>
+        <ion-card (click)="toggleDay(day)" [ngClass]="{'selected-day' : (day.selected)}">
+          <ion-card-header>
+            {{day.title}}
+          </ion-card-header>
+          <ion-card-content>
+            {{day.displayDate}}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-label padding-left padding-top>Are any ingredients needed?</ion-label>
+
+  <ion-grid no-padding>
+    <ion-row responsive-sm wrap align-items-stretch>
+      <ion-col width-50 *ngFor="let ingredient of recipe.ingredients" align-self-stretch>
+        <ion-item>
+          <ion-label>{{ingredient.description}}</ion-label>
+          <ion-checkbox [(ngModel)]="ingredient.checked"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -54,7 +54,7 @@ export class CommandCenter {
     });
 
     // load the command center data
-    commandCenterData.load();
+    commandCenterData.loadConfiguration();
   }
 
   openPage(page: PageInterface) {

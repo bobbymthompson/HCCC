@@ -6,5 +6,10 @@
     <ion-title>Shopping List</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content class="outer-content">
+<ion-content class="outer-content category-list">
+  <ion-list>
+    <ion-item *ngFor="let sli of shoppingListItems | async" (click)="editShoppingListItem(sli)" ng-style="{'line-height': '250px'}">
+      <h2>{{sli.description}}</h2>
+    </ion-item>
+  </ion-list>
 </ion-content>

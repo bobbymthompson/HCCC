@@ -1,15 +1,20 @@
 <ion-header>
   <ion-navbar>
     <ion-title>{{recipe.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addRecipeToWeeklyMenu()">
+        <ion-icon name="calendar"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content>
   <ion-label padding-left padding-top>INGREDIENTS</ion-label>
   <ion-list no-lines>
     <ion-item text-wrap>
-      <p *ngFor="let ingredient of recipe.ingredients">{{ingredient}}</p>
+      <p *ngFor="let ingredient of recipe.ingredients">{{ingredient.quantity}} {{ingredient.units}} {{ingredient.description}}</p>
     </ion-item>
-    <ion-label padding-left padding-top>PREPARATION STEPS</ion-label>
+    <ion-label padding-left padding-top>DIRECTIONS</ion-label>
     <ion-list no-lines>
         <ion-item *ngFor="let instruction of recipe.instructions" text-wrap>
             <h3>Step {{instruction.step}}</h3>

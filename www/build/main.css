@@ -36250,6 +36250,15 @@ page-category-list .card-subtitle {
   color: #fff;
 }
 
+ion-modal .modal-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 page-recipe-detail .scroll-content {
   background: #EDEDED;
 }
@@ -36262,4 +36271,44 @@ page-recipe-detail .scroll-content {
 
 .tab-button {
   max-width: 200px;
+}
+
+page-weekly-menu-add .scroll-content {
+  background: #EDEDED;
+}
+
+page-weekly-menu-add .category-card ion-card-header .item {
+  padding: 4px 16px;
+}
+
+page-weekly-menu-add .category-card ion-card-header,
+page-weekly-menu-add .category-card ion-card-content,
+page-weekly-menu-add .category-card ion-card-content .list ion-item-content {
+  padding: 0;
+}
+
+page-weekly-menu-add ion-card {
+  position: relative;
+  text-align: center;
+}
+
+page-weekly-menu-add .card-title {
+  position: absolute;
+  top: 36%;
+  font-size: 2.0em;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+}
+
+page-weekly-menu-add .card-subtitle {
+  font-size: 1.0em;
+  position: absolute;
+  top: 52%;
+  width: 100%;
+  color: #fff;
+}
+
+page-weekly-menu-add .selected-day {
+  background-color: #478aff;
 }
