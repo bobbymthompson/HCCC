@@ -1,7 +1,7 @@
 {
   "name": "hccc",
   "description": "Hamill Ct. Command Center",
-  "license": "Apache-2.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/striker8118/HCCC.git"
