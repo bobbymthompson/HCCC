@@ -30,4 +30,10 @@ export class WeeklyMenuPage {
       });
     }
   }
+
+  public removeFromWeeklyMenu(wmi: WeeklyMenuItem) {
+    console.log('Removing weekly menu item: %s', wmi.id);
+    console.log(wmi);
+    this.recipeDataProvider.removeWeeklyMenuItem(wmi.id);
+  }
 }

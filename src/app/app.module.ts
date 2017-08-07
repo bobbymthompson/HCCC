@@ -17,6 +17,7 @@ import { WeeklyMenuAddPage } from '../pages/weekly-menu-add/weekly-menu-add';
 import { CommandCenterData } from '../providers/command-center-data';
 import { RecipeDataProvider, ShoppingListDataProvider } from '../providers/recipe-data-provider';
 import { UserData } from '../providers/user-data';
+import { Config } from '../providers/config-provider';
 
 
 @NgModule({
@@ -44,6 +45,6 @@ import { UserData } from '../providers/user-data';
     ShoppingListPage,
     WeeklyMenuAddPage
   ],
-  providers: [ CommandCenterData, UserData, RecipeDataProvider, ShoppingListDataProvider, Storage]
+  providers: [ CommandCenterData, UserData, RecipeDataProvider, ShoppingListDataProvider, Config, Storage]
 })
 export class AppModule { }

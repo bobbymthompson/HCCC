@@ -8,33 +8,28 @@
 </ion-header>
 <ion-content class="outer-content category-list">
   <ion-list>
+
+
     <ion-item-group *ngFor="let wmi of weeklyMenuItems | async">
       <ion-item-divider color="light">{{wmi.dayOfTheWeek}} ({{wmi.displayDate}})</ion-item-divider>
-      <ion-item *ngIf="!wmi.recipe">
-        <h2>{{wmi?.recipe?.name}}</h2>
-        <p>{{wmi?.recipe?.description}}</p>
-      </ion-item>
-      <ion-item *ngIf="wmi.recipe" (click)="viewRecipe(wmi.recipe)" detail-push>
-        <ion-avatar item-left>
-          <img src="http://via.placeholder.com/75/E0007F/FFFFFF?text=__">
-        </ion-avatar>
-        <h2>{{wmi?.recipe?.name}}</h2>
-        <p>{{wmi?.recipe?.description}}</p>
-      </ion-item>
+      <ion-item-sliding>
+        <ion-item (click)="viewRecipe(wmi.recipe)" detail-push>
+          <ion-avatar item-left>
+            <img src="http://via.placeholder.com/75/E0007F/FFFFFF?text=__">
+          </ion-avatar>
+          <h2>{{wmi?.recipe?.name}}</h2>
+          <p>{{wmi?.recipe?.description}}</p>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="removeFromWeeklyMenu(wmi)">
+            <ion-icon name="delete">
+              Delete
+            </ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+
+
     </ion-item-group>
-    <!-- <ion-item-group *ngFor="let day of days">
-      <ion-item-divider color="light">{{day.title}} ({{day.displayDate}})</ion-item-divider>
-      <ion-item *ngIf="!day.recipe">
-        <h2>{{day.recipe?.name}}</h2>
-        <p>{{day.recipe?.description}}</p>
-      </ion-item>
-      <ion-item *ngIf="day.recipe" (click)="viewRecipe(day.recipe)" detail-push>
-        <ion-avatar item-left>
-          <img src="http://via.placeholder.com/75/E0007F/FFFFFF?text=__">
-        </ion-avatar>
-        <h2>{{day.recipe?.name}}</h2>
-        <p>{{day.recipe?.description}}</p>
-      </ion-item>
-    </ion-item-group> -->
   </ion-list>
 </ion-content>

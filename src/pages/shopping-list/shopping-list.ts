@@ -17,4 +17,12 @@ export class ShoppingListPage {
     this.shoppingListItems = this.shoppingListDataProvider.shoppingListItems;
     this.shoppingListDataProvider.load();
   }
+
+  public editShoppingListItem(sli: ShoppingListItem) {
+    console.log(sli);
+  }
+
+  public removeShoppingListItem(sli: ShoppingListItem) {
+    this.shoppingListDataProvider.remove(sli.id);
+  }
 }

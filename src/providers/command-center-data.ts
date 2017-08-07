@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { Http, Response } from '@angular/http';
-
 import { UserData } from './user-data';
-
+import { Config } from '../providers/config-provider';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
@@ -16,7 +14,7 @@ export class CommandCenterData {
   recipes: any;
   weeklyMenuItems: any;
 
-  constructor(public http: Http, public user: UserData) { }
+  constructor(public http: Http, private config: Config, public user: UserData) { }
 
   loadConfiguration(): any {
     if (this.configuration) {
@@ -35,7 +33,7 @@ export class CommandCenterData {
       return Observable.of(this.recipes);
     }
     else {
-      return this.http.get('http://localhost:9000/recipes')
+      return this.http.get(this.config.get('endPoint') + '/recipes')
         .map((res: Response) => {
           this.recipes = res.json();
           return this.recipes;

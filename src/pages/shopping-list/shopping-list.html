@@ -8,8 +8,17 @@
 </ion-header>
 <ion-content class="outer-content category-list">
   <ion-list>
-    <ion-item *ngFor="let sli of shoppingListItems | async" (click)="editShoppingListItem(sli)" ng-style="{'line-height': '250px'}">
-      <h2>{{sli.description}}</h2>
-    </ion-item>
+    <ion-item-sliding *ngFor="let sli of shoppingListItems | async">
+      <ion-item (click)="editShoppingListItem(sli)">
+        <h2>{{sli.description}}</h2>
+      </ion-item>
+      <ion-item-options side="right">
+          <button ion-button color="danger" (click)="removeShoppingListItem(sli)">
+            <ion-icon name="delete">
+              Delete
+            </ion-icon>
+          </button>
+        </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </ion-content>

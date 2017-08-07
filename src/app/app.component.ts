@@ -31,8 +31,8 @@ export class CommandCenter {
   appPages: PageInterface[] = [
     { title: 'Recipes', component: TabsPage, icon: 'list' },
     { title: 'Weekly Menu', component: TabsPage, index: 1, icon: 'calendar' },
-    { title: 'Shopping List', component: TabsPage, index: 2, icon: 'cart' },
-    { title: 'Search', component: TabsPage, index: 3, icon: 'search' }
+    { title: 'Shopping List', component: TabsPage, index: 2, icon: 'cart' }
+//    { title: 'Search', component: TabsPage, index: 3, icon: 'search' }
   ];
   
   rootPage: any;
