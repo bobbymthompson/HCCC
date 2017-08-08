@@ -128,16 +128,13 @@ export class ShoppingListDataProvider {
 
   create(sli: ShoppingListItem) {
 
-    console.log('Adding shopping list item:');
-    console.log(sli);
-
     this.http.post(this.config.get('endPoint') + '/shopping-list-items/', sli).map(res => res.json()).subscribe(data => {
       
-      this.dataStore.shoppingListItems.push(sli);
+      this.dataStore.shoppingListItems.splice(0, 0, data);
 
       this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
 
-    }, error => console.log('Could not create weekly menu item.'));
+    }, error => console.log('Could not create shopping list item.'));
   }
 
   createFromList(items: ShoppingListItem[]) {
@@ -148,10 +145,22 @@ export class ShoppingListDataProvider {
 
       this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
 
-    }, error => console.log('Could not create weekly menu item.'));
+    }, error => console.log('Could not create shopping list item.'));
+  }
+
+  update(sli: ShoppingListItem) {
+
+    this.http.put(this.config.get('endPoint') + `/shopping-list-items/${sli.id}`, { description: sli.description }).map(res => res.json()).subscribe(data => {
+        this.dataStore.shoppingListItems.forEach((t, i) => {
+          if (t.id === data.id) { this.dataStore.shoppingListItems[i] = data; }
+        });
+
+        this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
+      }, error => console.log('Could not update shopping list item.'));
   }
 
   remove(sliId: string) {
+
     this.http.delete(this.config.get('endPoint') + `/shopping-list-items/${sliId}`).subscribe(response => {
       
       this.dataStore.shoppingListItems.forEach((t, i) => {
@@ -159,6 +168,6 @@ export class ShoppingListDataProvider {
 
       this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
 
-    }, error => console.log('Could not delete todo.'));
+    }, error => console.log('Could not delete shopping list item.'));
   }
 }

@@ -17,7 +17,6 @@ export class Config {
         var environment:string;
         var data = {};
         environment = window.location.hostname;
-        console.log('Environment: %s', environment);
         switch (environment) {
             case 'localhost':
                 data = {

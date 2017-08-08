@@ -4,21 +4,26 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Shopping List</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addNewShoppingListItem()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 <ion-content class="outer-content category-list">
   <ion-list>
     <ion-item-sliding *ngFor="let sli of shoppingListItems | async">
-      <ion-item (click)="editShoppingListItem(sli)">
-        <h2>{{sli.description}}</h2>
+      <ion-item>
+        <ion-input type="text" [ngModel]="sli.description" (ngModelChange)='itemUpdated($event, sli)'></ion-input>
       </ion-item>
       <ion-item-options side="right">
-          <button ion-button color="danger" (click)="removeShoppingListItem(sli)">
+        <button ion-button color="danger" (click)="removeShoppingListItem(sli)">
             <ion-icon name="delete">
               Delete
             </ion-icon>
           </button>
-        </ion-item-options>
+      </ion-item-options>
     </ion-item-sliding>
   </ion-list>
 </ion-content>
