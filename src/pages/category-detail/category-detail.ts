@@ -31,7 +31,7 @@ export class CategoryDetailPage {
 
   ionViewDidLoad() {
     console.log("Category: '%s'", this.category.title);
-    this.commandCenterData.getRecipes(this.category.title).subscribe(recipes => {
+    this.commandCenterData.getRecipes(this.category.type).subscribe(recipes => {
       this.allRecipes = recipes;
       this.recipes = recipes;
     });

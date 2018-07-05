@@ -39,7 +39,7 @@ export class RecipeDetailPage {
         
         let ingredients = _.map(data.neededIngredients, (ingredient) => {
           let sli = <ShoppingListItem>{};
-          sli.description = ingredient.description;
+          sli.text = ingredient.text;
           return sli;
         });
 

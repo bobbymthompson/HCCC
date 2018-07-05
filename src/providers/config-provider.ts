@@ -20,7 +20,7 @@ export class Config {
         switch (environment) {
             case 'localhost':
                 data = {
-                    endPoint: 'http://localhost:9000'
+                    endPoint: 'http://localhost:50222/api'
                 };
                 break;
              case 'hccc.herokuapp.com':
@@ -30,7 +30,7 @@ export class Config {
                 break;
             default:
                 data = {
-                    endPoint: 'http://localhost:9000'
+                    endPoint: 'http://localhost:50222/api'
                 };
         }
         return data[value];

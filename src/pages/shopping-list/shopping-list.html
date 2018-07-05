@@ -15,7 +15,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let sli of shoppingListItems | async">
       <ion-item>
-        <ion-input type="text" [ngModel]="sli.description" (ngModelChange)='itemUpdated($event, sli)'></ion-input>
+        <ion-input type="text" [ngModel]="sli.text" (ngModelChange)='itemUpdated($event, sli)'></ion-input>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger" (click)="removeShoppingListItem(sli)">

@@ -4,6 +4,7 @@ import { Config } from '../providers/config-provider';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
+import { SlicePipe } from '@angular/common';
 
 export interface Recipe {
   id: string;
@@ -37,7 +38,7 @@ export class RecipeDataProvider {
 
     var formattedToday = (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getFullYear();
 
-    this.http.get(this.config.get('endPoint') + '/weekly-menus/' + formattedToday).map(res => res.json()).subscribe(data => {
+    this.http.get(this.config.get('endPoint') + '/weeklymenuitems/' + formattedToday).map(res => res.json()).subscribe(data => {
 
       this.dataStore.weeklyMenuItems = data;
       this.dataStore.weeklyMenuItems.forEach((wmi) => this.formatWeeklyMenuItem(wmi));
@@ -54,10 +55,10 @@ export class RecipeDataProvider {
 
     let postData = {
       date: (wmi.date.getMonth() + 1) + '-' + wmi.date.getDate() + '-' + wmi.date.getFullYear(),
-      _recipe: wmi.recipe.id
+      recipe: wmi.recipe.id
     }
 
-    this.http.post(this.config.get('endPoint') + '/weekly-menus/', postData).map(res => res.json()).subscribe(data => {
+    this.http.post(this.config.get('endPoint') + '/weeklymenuitems/', postData).map(res => res.json()).subscribe(data => {
       
       wmi.id = data.id;
       this.formatWeeklyMenuItem(wmi);
@@ -68,7 +69,7 @@ export class RecipeDataProvider {
   }
 
   removeWeeklyMenuItem(wmiId: string) {
-    this.http.delete(this.config.get('endPoint') + `/weekly-menus/${wmiId}`).subscribe(response => {
+    this.http.delete(this.config.get('endPoint') + `/weeklymenuitems/${wmiId}`).subscribe(response => {
       
       this.dataStore.weeklyMenuItems.forEach((t, i) => {
         if (t.id === wmiId) { this.dataStore.weeklyMenuItems.splice(i, 1); }
@@ -98,7 +99,7 @@ export class RecipeDataProvider {
 
 export interface ShoppingListItem {
   id: string;
-  description: string;
+  text: string;
 }
 
 @Injectable()
@@ -117,7 +118,7 @@ export class ShoppingListDataProvider {
   
   load() {
 
-    this.http.get(this.config.get('endPoint') + '/shopping-list-items/').map(res => res.json()).subscribe(data => {
+    this.http.get(this.config.get('endPoint') + '/shoppingListItems/').map(res => res.json()).subscribe(data => {
 
       this.dataStore.shoppingListItems = data;
 
@@ -128,7 +129,7 @@ export class ShoppingListDataProvider {
 
   create(sli: ShoppingListItem) {
 
-    this.http.post(this.config.get('endPoint') + '/shopping-list-items/', sli).map(res => res.json()).subscribe(data => {
+    this.http.post(this.config.get('endPoint') + '/shoppingListItems/', sli).map(res => res.json()).subscribe(data => {
       
       this.dataStore.shoppingListItems.splice(0, 0, data);
 
@@ -139,18 +140,22 @@ export class ShoppingListDataProvider {
 
   createFromList(items: ShoppingListItem[]) {
 
-    this.http.post(this.config.get('endPoint') + '/shopping-list-items/', items).map(res => res.json()).subscribe(data => {
+    items.forEach(sli => {
+      this.create(sli);
+    });
+
+    // this.http.post(this.config.get('endPoint') + '/shoppingListItems/', items).map(res => res.json()).subscribe(data => {
       
-      this.dataStore.shoppingListItems.push(data);
+    //   this.dataStore.shoppingListItems.push(data);
 
-      this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
+    //   this._shoppingListItems.next(Object.assign({}, this.dataStore).shoppingListItems);
 
-    }, error => console.log('Could not create shopping list item.'));
+    // }, error => console.log('Could not create shopping list item.'));
   }
 
   update(sli: ShoppingListItem) {
 
-    this.http.put(this.config.get('endPoint') + `/shopping-list-items/${sli.id}`, { description: sli.description }).map(res => res.json()).subscribe(data => {
+    this.http.put(this.config.get('endPoint') + `/shoppingListItems/${sli.id}`, { text: sli.text }).map(res => res.json()).subscribe(data => {
         this.dataStore.shoppingListItems.forEach((t, i) => {
           if (t.id === data.id) { this.dataStore.shoppingListItems[i] = data; }
         });
@@ -161,7 +166,7 @@ export class ShoppingListDataProvider {
 
   remove(sliId: string) {
 
-    this.http.delete(this.config.get('endPoint') + `/shopping-list-items/${sliId}`).subscribe(response => {
+    this.http.delete(this.config.get('endPoint') + `/shoppingListItems/${sliId}`).subscribe(response => {
       
       this.dataStore.shoppingListItems.forEach((t, i) => {
         if (t.id === sliId) { this.dataStore.shoppingListItems.splice(i, 1); }      });

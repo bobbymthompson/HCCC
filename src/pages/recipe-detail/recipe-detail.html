@@ -12,13 +12,13 @@
   <ion-label padding-left padding-top>INGREDIENTS</ion-label>
   <ion-list no-lines>
     <ion-item text-wrap>
-      <p *ngFor="let ingredient of recipe.ingredients">{{ingredient.quantity}} {{ingredient.units}} {{ingredient.description}}</p>
+      <p *ngFor="let ingredient of recipe.ingredients">{{ingredient.text}}</p>
     </ion-item>
     <ion-label padding-left padding-top>DIRECTIONS</ion-label>
     <ion-list no-lines>
-        <ion-item *ngFor="let instruction of recipe.instructions" text-wrap>
-            <h3>Step {{instruction.step}}</h3>
-            <p>{{instruction.description}}</p>
+        <ion-item *ngFor="let direction of recipe.directions" text-wrap>
+            <!-- <h3>Step {{direction.step}}</h3> -->
+            <p>{{direction.text}}</p>
         </ion-item>
     </ion-list>
     <!--<ion-item><p>2 Eggs</p></ion-item>

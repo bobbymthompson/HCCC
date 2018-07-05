@@ -32,7 +32,7 @@ export class ShoppingListPage {
   public addNewShoppingListItem() {
     
     let sli = <ShoppingListItem>{};
-    sli.description = '';
+    sli.text = '';
     this.shoppingListDataProvider.create(sli);
   }
 
@@ -40,8 +40,8 @@ export class ShoppingListPage {
     this.shoppingListDataProvider.remove(sli.id);
   }
 
-  public itemUpdated(newDescription: string, sli: ShoppingListItem) {
-    sli.description = newDescription;
+  public itemUpdated(newText: string, sli: ShoppingListItem) {
+    sli.text = newText;
     this.sliChanged.next(sli);
   }
 }

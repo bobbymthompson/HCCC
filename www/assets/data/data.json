@@ -1,18 +1,23 @@
 {
   "categories": [{
     "title": "Appetizers",
+    "type": "Appetizer",
     "image": "assets/img/categories/appetizers.png"
   }, {
-    "title": "Entrees",
+    "title": "Entrées",
+    "type": "Entrée",
     "image": "assets/img/categories/entrees.png"
   }, {
     "title": "Salads",
+    "type": "Salad",
     "image": "assets/img/categories/salads.png"
   }, {
     "title": "Soups",
+    "type": "Soup",
     "image": "assets/img/categories/soups.png"
   },  {
     "title": "Desserts",
+    "type": "Dessert",
     "image": "assets/img/categories/desserts.png"
   }],
 

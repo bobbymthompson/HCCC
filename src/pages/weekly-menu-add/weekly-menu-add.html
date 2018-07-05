@@ -39,7 +39,7 @@
     <ion-row responsive-sm wrap align-items-stretch>
       <ion-col width-50 *ngFor="let ingredient of recipe.ingredients" align-self-stretch>
         <ion-item>
-          <ion-label>{{ingredient.description}}</ion-label>
+          <ion-label>{{ingredient.text}}</ion-label>
           <ion-checkbox [(ngModel)]="ingredient.checked"></ion-checkbox>
         </ion-item>
       </ion-col>
