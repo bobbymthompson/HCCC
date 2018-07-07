@@ -17,8 +17,7 @@
     <ion-label padding-left padding-top>DIRECTIONS</ion-label>
     <ion-list no-lines>
         <ion-item *ngFor="let direction of recipe.directions" text-wrap>
-            <h3>Step {{direction.step}}</h3>
-            <h3>{{direction.text}}</h3>
+            <h3>{{direction.step}}) {{direction.text}}</h3>
         </ion-item>
     </ion-list>
   </ion-list>

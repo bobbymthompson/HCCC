@@ -29,7 +29,7 @@ export class Config {
                 break;
             default:
                 data = {
-                    endPoint: 'http://homeserver:8000/api'
+                    endPoint: 'http://192.168.0.222:8000/api'
                 };
         }
         return data[value];
